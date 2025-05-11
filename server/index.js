@@ -130,16 +130,31 @@ app.post('/api/analyze', async (req, res) => {
 
 // Helper functions
 function splitIntoSentences(text) {
-  // Basic sentence splitting logic
-  // This can be improved with more sophisticated regex
-  const sentences = text
-    .split(/[.!?]+/)
+  // 使用正则表达式匹配句子，保留标点符号
+  // 匹配规则：一个或多个非句末标点的字符，后跟句末标点（.!?）
+  const sentenceRegex = /[^.!?]+[.!?]*/g;
+  let matches = text.match(sentenceRegex) || [];
+
+  // 处理匹配到的句子
+  const sentences = matches
     .map(sentence => sentence.trim())
-    .filter(sentence => sentence.length > 0);
+    .filter(sentence => sentence.length > 0)
+    .map(sentence => {
+      // 如果句子末尾没有标点符号，添加句号
+      if (!/[.!?]$/.test(sentence)) {
+        return sentence + '.';
+      }
+      return sentence;
+    });
 
   // 确保至少有一个句子
   if (sentences.length === 0 && text.trim().length > 0) {
-    sentences.push(text.trim());
+    let trimmedText = text.trim();
+    // 如果输入文本没有句末标点，添加句号
+    if (!/[.!?]$/.test(trimmedText)) {
+      trimmedText += '.';
+    }
+    sentences.push(trimmedText);
   }
 
   console.log("分割后的句子:", sentences);
@@ -161,7 +176,7 @@ async function translateWithGemini(sentence) {
       {
         // 增加模型配置
         generationConfig: {
-          temperature: 0.2, // 降低温度，使输出更确定性
+          temperature: 0.7, // 降低温度，使输出更确定性
           maxOutputTokens: 1024, // 增加最大输出长度
         },
         contents: [

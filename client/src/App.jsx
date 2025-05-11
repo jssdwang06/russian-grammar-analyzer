@@ -546,7 +546,7 @@ function App() {
                               {component.children.map((child, childIndex) => (
                                 <div key={childIndex} className="component-child">
                                   <div className="child-header">
-                                    <span className="bullet-small">    -</span> <span className="child-type">{child.type}:</span>
+                                    <span className="bullet-small">-</span> <span className="child-type">{child.type}:</span>
                                     <span className="child-text highlight-russian">{child.text}</span>
                                     {child.morphology && Object.keys(child.morphology).length > 0 && (
                                       <span className="morphology-summary">
@@ -571,7 +571,7 @@ function App() {
                                     <div className="nested-children">
                                       {child.children.map((nestedChild, nestedIndex) => (
                                         <div key={nestedIndex} className="nested-child">
-                                          <span className="bullet-nested">        -</span> <span className="nested-type">{nestedChild.type}:</span>
+                                          <span className="bullet-nested">-</span> <span className="nested-type">{nestedChild.type}:</span>
                                           <span className="nested-text highlight-russian">{nestedChild.text}</span>
                                           {nestedChild.morphology && Object.keys(nestedChild.morphology).length > 0 && (
                                             <span className="morphology-summary">

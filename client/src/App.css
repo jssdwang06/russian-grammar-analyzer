@@ -522,12 +522,14 @@ textarea:focus {
   color: #333; /* Dark bullet */
   font-size: 1rem;
   margin-right: 0.3rem;
+  margin-left: 0; /* 移除左侧缩进，与垂直线对齐 */
 }
 
 .bullet-nested {
   color: #333; /* Dark bullet */
   font-size: 1rem;
   margin-right: 0.3rem;
+  margin-left: 2rem; /* 增加左侧缩进 */
 }
 
 .component-type {
@@ -581,7 +583,7 @@ textarea:focus {
 
 /* Component Children Styles */
 .component-children {
-  margin-left: 1.5rem;
+  margin-left: 2rem; /* 增加左侧缩进 */
   margin-top: 0.5rem;
 }
 
@@ -589,11 +591,13 @@ textarea:focus {
   margin-bottom: 0.8rem;
   padding-left: 0.5rem;
   border-left: 2px solid #f0f0f0;
+  position: relative; /* 添加相对定位，用于子元素的绝对定位 */
 }
 
 .child-header {
   margin-bottom: 0.3rem;
   line-height: 1.5;
+  padding-left: 0; /* 移除左侧内边距 */
 }
 
 .child-type {
@@ -621,13 +625,14 @@ textarea:focus {
 
 /* Nested Children Styles */
 .nested-children {
-  margin-left: 1.5rem;
+  margin-left: 2.5rem; /* 增加左侧缩进 */
   margin-top: 0.5rem;
 }
 
 .nested-child {
   margin-bottom: 0.5rem;
   line-height: 1.5;
+  padding-left: 0.5rem; /* 增加左侧内边距 */
 }
 
 .nested-type {
@@ -654,7 +659,7 @@ textarea:focus {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.3rem;
-  margin-left: 1.5rem;
+  margin-left: 2.5rem; /* 增加左侧缩进 */
   margin-bottom: 0.5rem;
 }
 
